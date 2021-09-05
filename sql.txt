@@ -1,0 +1,50 @@
+import java.sql.*; 
+
+String url = "jdbc:sqlite:movies.db";
+ 
+connecting = DriverManager.getConnection(url);
+
+System.out.println("Connection to SQLite has been established.");
+
+// select all column from movie database
+   
+ public void selectAll(List<Movies> movieList ){
+    String sql = "SELECT  Moviename,Actor,Actress,Director, yearofRelease FROM movies ;
+
+    try(Connection conn = this.Connect();
+        Statement s = connecting.createStatement();
+        ResultSet r = s.executeQuery(sql)){
+        while(r.next()){
+            movieList.addAll(new Movies(rs.getString("Moviename"),rs.getString("Actor"),rs.getString("Actress"),rs.getString("Director"),rs.getInt("year")));
+       for(int i =0;i< movielist.size();i++){
+       System.out.println( movielist.get[i]);
+          }
+
+        }
+    }catch(SQLException ex){
+        System.out.println(ex.getMessage());
+    }
+
+
+//select movir name  by giving actor name as in parameter
+
+ public void moviename( String name){
+    String sql = "SELECT Moviename FROM movies WHERE Actor = " + name + " ";
+
+     try(Connection conn = this.Connect();
+        Statement s = connecting.createStatement();
+        ResultSet r = s.executeQuery(sql)){
+        while(rs.next()){
+              String  name = r.getString("name");
+
+             System.out.println( name));
+            }
+        }
+    }catch(SQLException ex){
+        System.out.println(ex.getMessage());
+    }
+
+  public static void main(String[] args) {
+       selectAll( );
+       moviename( 'Dhanush');
+    }
